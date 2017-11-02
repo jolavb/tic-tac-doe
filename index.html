@@ -17,9 +17,9 @@
         <table class='table'>
           <thead>
             <tr>
-              <th class= 'player-name' colspan="2">
+              <th colspan="2">
                 <img class='img-responsive'id='player-icon' src='assets/images/User-icon.png' alt='playerlogo'>
-                <p>Player: Julian</p>
+                <p>Signed in as: <span class='player-name'></span></p>
               </th>
             </tr>
             <tr>
@@ -57,20 +57,23 @@
           <input name="passwords[new]" type='password' placeholder="new password">
           <button type='submit'>Submit</button>
         </form>
+
+        <button id='signout'>Log Out</button>
+        <button id='newgame'>New Game</button>
       </section>
       <section id='board'>
         <div class='main-wrapper'>
             <div class ='container-fluid' id='game-board'>
               <div class = 'row'>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
-                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4 cell' id='0'></div>
+                <div class = 'col col-xs-4 cell' id='1'></div>
+                <div class = 'col col-xs-4 cell' id='2'></div>
+                <div class = 'col col-xs-4 cell' id='3'></div>
+                <div class = 'col col-xs-4 cell' id='4'></div>
+                <div class = 'col col-xs-4 cell' id='5'></div>
+                <div class = 'col col-xs-4 cell' id='6'></div>
+                <div class = 'col col-xs-4 cell' id='7'></div>
+                <div class = 'col col-xs-4 cell' id='8'></div>
               </div>
             </div>
         </div>

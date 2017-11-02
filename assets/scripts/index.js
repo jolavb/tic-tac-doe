@@ -9,6 +9,9 @@ $(() => {
   $('#registration').on('submit', events.onRegistration)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
+  $('#signout').on('click', events.onSignout)
+  $('#newgame').on('click', events.onNewGame)
+  $('.cell').on('click', events.onPlay)
 })
 
 // use require with a reference to bundle the file and use it in this file
