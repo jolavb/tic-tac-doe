@@ -11,15 +11,74 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+    <body>
+
+      <section id='scoreboard'>
+        <table class='table'>
+          <thead>
+            <tr>
+              <th class= 'player-name' colspan="2">
+                <img class='img-responsive'id='player-icon' src='assets/images/User-icon.png' alt='playerlogo'>
+                <p>Player: Julian</p>
+              </th>
+            </tr>
+            <tr>
+              <th>Games Played</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id='Forms'>
+        <form id='registration'>
+          <legend> Register </legend>
+          <input type='text' placeholder="email">
+          <input type='text' placeholder="password">
+          <input type='text' placeholder="re-enter password">
+          <button type='submit'>Register</button>
+        </form>
+
+        <form id='sign-in'>
+          <legend> Sign In </legend>
+          <input type='text' placeholder="email">
+          <input type='text' placeholder="password">
+          <button type='submit'>Sign In</button>
+        </form>
+
+        <form id='change-password'>
+          <legend> Change Password </legend>
+          <input type='text' placeholder="old password">
+          <input type='text' placeholder="new password">
+          <button type='submit'>Submit</button>
+        </form>
+      </section>
+      <section id='board'>
+        <div class='main-wrapper'>
+            <div class ='container-fluid' id='board'>
+              <div class = 'row'>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+                <div class = 'col col-xs-4'></div>
+              </div>
+            </div>
+        </div>
+      </section>
     </body>
+
+
+
+
 </html>
