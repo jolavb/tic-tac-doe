@@ -1,6 +1,8 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const logic = require('./logic.js')
+const store = require('./../store')
 
 const onRegistration = function (event) {
   event.preventDefault()
@@ -41,9 +43,8 @@ const onNewGame = function (event) {
 }
 
 const onPlay = function () {
-  const cell = $(this)
-  const value = 1
-  api.updateGame(cell.prop('id'), value)
+  store.turnInfo.selected = $(this).prop('id')
+  api.updateGame()
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
 }

@@ -58,12 +58,12 @@ const newGame = function () {
   })
 }
 
-const updateGame = function (index, value) {
+const updateGame = function () {
   let data = {
     'game': {
       'cell': {
-        'index': index,
-        'value': value
+        'index': store.turnInfo.selected,
+        'value': store.turnInfo.value
       },
       'over': false
     }

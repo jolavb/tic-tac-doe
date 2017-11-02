@@ -1,4 +1,5 @@
 const store = require('./../store')
+const logic = require('./logic')
 
 const signUpSuccess = function (response) {
   console.log(response)
@@ -45,6 +46,7 @@ const newGameFail = function (error) {
 
 const updateGameSuccess = function (response) {
   store.game = response.game
+  logic.playerSwitch()
   console.log(store.game)
 }
 
