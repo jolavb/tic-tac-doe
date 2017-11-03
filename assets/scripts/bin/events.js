@@ -50,11 +50,17 @@ const onPlay = function () {
     .catch(ui.updateGameFail)
 }
 
+const onRegisterDirect = function () {
+  $('#sign-in').addClass('hidden')
+  $('#registration').removeClass('hidden')
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
   onChangePassword,
   onSignout,
   onNewGame,
-  onPlay
+  onPlay,
+  onRegisterDirect
 }

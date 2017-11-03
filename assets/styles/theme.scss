@@ -28,6 +28,7 @@
   & > input {
     width: 75%;
     margin: 0 auto;
+    color: $simpeblue;
   }
   & > button {
     margin-top: 5px;
@@ -40,6 +41,11 @@
 .hidden {
   display: none;
 }
+
+.visible {
+  display: block;
+}
+
 
 
 

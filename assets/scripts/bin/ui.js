@@ -2,7 +2,8 @@ const store = require('./../store')
 const logic = require('./logic')
 
 const signUpSuccess = function (response) {
-  console.log(response)
+  $('#registration').addClass('hidden')
+  $('#sign-in').removeClass('hidden')
 }
 
 const signUpFail = function (error) {
@@ -11,7 +12,7 @@ const signUpFail = function (error) {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  console.log(store.user.email)
+  $('#overlay').css('display', 'none')
   $('.player-name').text(store.user.email)
 }
 
