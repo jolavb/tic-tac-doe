@@ -52,7 +52,7 @@ const onPlay = function () {
 
 const toggleForms = function (target) {
   const formOne = $(this).parent()
-  console.log(formOne)
+  console.log(formOne.attr('id'))
 
   switch (formOne.attr('id')) {
     case 'sign-in':
@@ -60,10 +60,16 @@ const toggleForms = function (target) {
       $('#registration').toggleClass('hidden')
       break
 
-    case 'signup-fail':
-      formOne.removeClass('signup-fail')
-      formOne.toggle()
+    case 'signup-err':
+      formOne.toggleClass('hidden')
+      formOne.attr('id', 'error-box')
       $('#registration').toggleClass('hidden')
+      break
+
+    case 'signIn-err':
+      formOne.toggleClass('hidden')
+      formOne.attr('id', 'error-box')
+      $('#sign-in').toggleClass('hidden')
       break
   }
 }

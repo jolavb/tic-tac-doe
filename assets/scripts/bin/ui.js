@@ -10,7 +10,7 @@ const signUpSuccess = function (response) {
 const signUpFail = function (error) {
   $('#error-box, #registration').toggleClass('hidden')
   $('.error-message').html('<p> Invalid Registration </p>')
-  $('.error-box').addClass('signup-fail')
+  $('#error-box').attr('id', 'signup-err')
   console.log(error)
 }
 
@@ -21,9 +21,10 @@ const signInSuccess = function (response) {
 }
 
 const signInFail = function (error) {
-  $('#sign-in').addClass('hidden')
+  $('#error-box, #sign-in').toggleClass('hidden')
   $('.error-message').html('<p> Please Enter a Valid Email and Password</p>')
-  $('#error-box').removeClass('hidden')
+  $('#error-box').attr('id', 'signIn-err')
+
   console.log(error)
 }
 
