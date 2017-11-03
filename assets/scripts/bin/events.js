@@ -44,6 +44,7 @@ const onNewGame = function (event) {
 
 const onPlay = function () {
   store.turnInfo.selected = $(this)
+  ui.updateBoard()
   api.updateGame()
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
