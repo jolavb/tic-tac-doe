@@ -1,16 +1,14 @@
 const store = require('./../store')
 const logic = require('./logic')
-const events = require('./events')
 
 const signUpSuccess = function (response) {
-  $('#registration').addClass('hidden')
-  $('#sign-in').removeClass('hidden')
+  $('#registration').toggleClass('hidden')
+  $('#sign-in').toggleClass('hidden')
 }
 
 const signUpFail = function (error) {
-  $('#error-box, #registration').toggleClass('hidden')
   $('.error-message').html('<p> Invalid Registration </p>')
-  $('#error-box').attr('id', 'signup-err')
+  $('.error-box').toggleClass('hidden')
   console.log(error)
 }
 
@@ -21,10 +19,8 @@ const signInSuccess = function (response) {
 }
 
 const signInFail = function (error) {
-  $('#error-box, #sign-in').toggleClass('hidden')
   $('.error-message').html('<p> Please Enter a Valid Email and Password</p>')
-  $('#error-box').attr('id', 'signIn-err')
-
+  $('.error-box').toggleClass('hidden')
   console.log(error)
 }
 
@@ -67,9 +63,6 @@ const updateBoard = function () {
 const updateGameFail = function (error) {
   console.log(error)
 }
-
-
-
 
 module.exports = {
   signUpSuccess,

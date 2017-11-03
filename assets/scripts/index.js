@@ -12,5 +12,6 @@ $(() => {
   $('#signout').on('click', events.onSignout)
   $('#newgame').on('click', events.onNewGame)
   $('.cell').on('click', events.onPlay)
-  $('.form-toggler').on('click', events.toggleForms)
+  $('#errorBtn').on('click', events.toggleErr)
+  $('#register-link').on('click', events.goToRegistration)
 })

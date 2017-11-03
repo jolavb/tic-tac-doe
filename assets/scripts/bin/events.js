@@ -50,28 +50,13 @@ const onPlay = function () {
     .catch(ui.updateGameFail)
 }
 
-const toggleForms = function (target) {
-  const formOne = $(this).parent()
-  console.log(formOne.attr('id'))
+const toggleErr = function () {
+  $(this).parent().toggleClass('hidden')
+}
 
-  switch (formOne.attr('id')) {
-    case 'sign-in':
-      formOne.toggle()
-      $('#registration').toggleClass('hidden')
-      break
-
-    case 'signup-err':
-      formOne.toggleClass('hidden')
-      formOne.attr('id', 'error-box')
-      $('#registration').toggleClass('hidden')
-      break
-
-    case 'signIn-err':
-      formOne.toggleClass('hidden')
-      formOne.attr('id', 'error-box')
-      $('#sign-in').toggleClass('hidden')
-      break
-  }
+const goToRegistration = function () {
+  $(this).parent().toggleClass('hidden')
+  $('#registration').toggleClass('hidden')
 }
 
 module.exports = {
@@ -81,5 +66,6 @@ module.exports = {
   onSignout,
   onNewGame,
   onPlay,
-  toggleForms
+  toggleErr,
+  goToRegistration
 }
