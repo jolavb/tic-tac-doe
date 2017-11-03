@@ -36,21 +36,6 @@
         </table>
       </section>
       <section id='Forms'>
-        <form id='registration'>
-          <legend> Register </legend>
-          <input name="credentials[email]" type= 'text' placeholder="email">
-          <input name="credentials[password]" type="password" placeholder="password">
-          <input name="credentials[password_confirmation]" type="password" placeholder="re-enter password">
-          <button type='submit'>Register</button>
-        </form>
-
-        <form id='sign-in'>
-          <legend> Sign In </legend>
-          <input name="credentials[email]" type='text' placeholder="email">
-          <input name="credentials[password]" type='password' placeholder="password">
-          <button type='submit'>Sign In</button>
-        </form>
-
         <form id='change-password'>
           <legend> Change Password </legend>
           <input name="passwords[old]" type='password' placeholder="old password">
@@ -77,6 +62,36 @@
               </div>
             </div>
         </div>
+      </section>
+      <section id='overlay-section'>
+
+        <div class = 'container' id='overlay'>
+          <div class = 'row'>
+            <div class= 'col-xs-4'></div>
+            <div class = 'col-xs-4'>
+
+              <form id='sign-in' class ='overlay-form'>
+                <legend> Sign In </legend>
+                <input name="credentials[email]" type='text' placeholder="email">
+                <input name="credentials[password]" type='password' placeholder="password">
+                <button type='submit'>Sign In</button>
+                <button type='button'>Register</button>
+              </form>
+
+              <form id='registration' class ='overlay-form'>
+                <legend> Register </legend>
+                <input name="credentials[email]" type= 'text' placeholder="email">
+                <input name="credentials[password]" type="password" placeholder="password">
+                <input name="credentials[password_confirmation]" type="password" placeholder="re-enter password">
+                <button type='submit'>Register</button>
+              </form>
+
+            </div>
+            <div class= 'col-xs-4'></div>
+          </div>
+
+        </div>
+
       </section>
     </body>
 
