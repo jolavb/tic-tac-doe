@@ -50,9 +50,8 @@ const onPlay = function () {
     .catch(ui.updateGameFail)
 }
 
-const onRegisterDirect = function () {
-  $('#sign-in').addClass('hidden')
-  $('#registration').removeClass('hidden')
+const onFormToggle = function () {
+  console.log(this.parent)
 }
 
 module.exports = {
@@ -62,5 +61,5 @@ module.exports = {
   onSignout,
   onNewGame,
   onPlay,
-  onRegisterDirect
+  onFormToggle
 }
