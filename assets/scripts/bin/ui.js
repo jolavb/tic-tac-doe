@@ -1,5 +1,6 @@
 const store = require('./../store')
 const logic = require('./logic')
+const events = require('./events')
 
 const signUpSuccess = function (response) {
   $('#registration').addClass('hidden')
@@ -7,6 +8,9 @@ const signUpSuccess = function (response) {
 }
 
 const signUpFail = function (error) {
+  $('#error-box, #registration').toggleClass('hidden')
+  $('.error-message').html('<p> Invalid Registration </p>')
+  $('.error-box').addClass('signup-fail')
   console.log(error)
 }
 

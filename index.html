@@ -36,10 +36,9 @@
         </table>
       </section>
 
-      <section id='Forms'>
-        <button id='signout'>Log Out</button>
-        <button id='newgame'>New Game</button>
-      </section>
+      <button id='signout'>Log Out</button>
+      <button id='newgame'>New Game</button>
+
 
       <section id='board'>
         <div class='main-wrapper'>
@@ -70,19 +69,18 @@
                 <input name="credentials[email]" type='text' placeholder="email">
                 <input name="credentials[password]" type='password' placeholder="password">
                 <button type='submit'>Sign In</button>
-<<<<<<< HEAD
-                <button class='form-toggle' id='register-link'>Register</button>
-=======
                 <button class = 'form-toggle' id='register-link'>Register</button>
+=======
+                <button type='button' class='form-toggler'>Register</button>
 >>>>>>> js
               </form>
 
-              <form id='registration' class ='overlay-form'>
+              <form id='registration' class ='overlay-form hidden'>
                 <legend> Register </legend>
                 <input name="credentials[email]" type= 'text' placeholder="email">
                 <input name="credentials[password]" type="password" placeholder="password">
                 <input name="credentials[password_confirmation]" type="password" placeholder="re-enter password">
-                <button class = 'form-toggle' type='submit'>Register</button>
+                <button class = 'submit' type='submit'>Register</button>
               </form>
 
               <!-- <form id='change-password'  class ='overlay-form'>
@@ -96,11 +94,10 @@
               <div id='error-box' class= 'overlay-form'>
                 <legend> Error </legend>
                 <div class='error-message'></div>
-                <button id='errorBtn'>OK</button>
-              </div> -->
+                <button id='errorBtn' class='form-toggler'>OK</button>
+              </div>
 
             </div>
-            <div class= 'col-xs-4'></div>
           </div>
 
         </div>
