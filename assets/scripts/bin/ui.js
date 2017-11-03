@@ -17,6 +17,9 @@ const signInSuccess = function (response) {
 }
 
 const signInFail = function (error) {
+  $('#sign-in').addClass('hidden')
+  $('.error-message').append('<p> Please Enter a Valid Email and Password</p>')
+  $('#error-box').removeClass('hidden')
   console.log(error)
 }
 

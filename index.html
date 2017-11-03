@@ -13,8 +13,8 @@
     </head>
 
     <body>
-      <section id='scoreboard'>
-        <table class='table'>
+      <section class='player-info-section'>
+        <table id='player-info'>
           <thead>
             <tr>
               <th colspan="2">
@@ -35,17 +35,12 @@
           </tbody>
         </table>
       </section>
-      <section id='Forms'>
-        <form id='change-password'>
-          <legend> Change Password </legend>
-          <input name="passwords[old]" type='password' placeholder="old password">
-          <input name="passwords[new]" type='password' placeholder="new password">
-          <button type='submit'>Submit</button>
-        </form>
 
+      <section id='Forms'>
         <button id='signout'>Log Out</button>
         <button id='newgame'>New Game</button>
       </section>
+
       <section id='board'>
         <div class='main-wrapper'>
             <div class ='container-fluid' id='game-board'>
@@ -85,6 +80,21 @@
                 <input name="credentials[password_confirmation]" type="password" placeholder="re-enter password">
                 <button type='submit'>Register</button>
               </form>
+
+              <form id='change-password'  class ='overlay-form hidden'>
+                <legend> Change Password </legend>
+                <input name="passwords[old]" type='password' placeholder="old password">
+                <input name="passwords[new]" type='password' placeholder="new password">
+                <button type='submit'>Submit</button>
+              </form>
+
+
+              <div id='error-box' class= 'overlay-form hidden'>
+                <legend> Error </legend>
+                <div class='error-message'></div>
+                <button id='errorBtn'>OK</button>
+              </div>
+
 
             </div>
             <div class= 'col-xs-4'></div>

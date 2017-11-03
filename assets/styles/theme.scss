@@ -1,7 +1,4 @@
 
-
-
-
 #overlay {
   position: fixed;
   width: 100%;
@@ -32,6 +29,7 @@
   }
   & > button {
     margin-top: 5px;
+    margin-bottom: 10px;
     width: 25%;
     background-color: $simpeblue;
     color: $simpyellow;
@@ -45,10 +43,6 @@
 .visible {
   display: block;
 }
-
-
-
-
 
 
 
@@ -72,26 +66,27 @@
   background-size: contain;
 }
 
-#Player-Stats {
-  color: $black;
-  text-align: center;
-  & th{
-    padding: 20px;
-  }
-}
 
-.table {
+.player-info-section {
   width: 300px;
-  margin: 0 auto;
+  height: 100%;
+  position: fixed;
   text-align: center;
   color:$simpeblue;
   background:$simpyellow;
+  & > table {
+    text-align: left;
+    width: 100%;
+    & > tr {
+      width: 50%;
+    }
+  }
 }
 
 th{
-  text-align: center;
+  text-align: left;
   & > img{
-    max-height: 50px;
+    max-height: 100px;
     margin: 0 auto;
     padding-bottom: 10px;
   }
