@@ -54,6 +54,10 @@ const onFormToggle = function () {
   console.log(this.parent)
 }
 
+const onFormToggle = function () {
+  console.log(this.parent)
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -61,5 +65,6 @@ module.exports = {
   onSignout,
   onNewGame,
   onPlay,
+  onRegisterDirect,
   onFormToggle
 }
