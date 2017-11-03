@@ -55,6 +55,10 @@ const onRegisterDirect = function () {
   $('#registration').removeClass('hidden')
 }
 
+const onFormToggle = function () {
+  console.log(this.parent)
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -62,5 +66,6 @@ module.exports = {
   onSignout,
   onNewGame,
   onPlay,
-  onRegisterDirect
+  onRegisterDirect,
+  onFormToggle
 }

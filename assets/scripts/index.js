@@ -13,6 +13,7 @@ $(() => {
   $('#newgame').on('click', events.onNewGame)
   $('.cell').on('click', events.onPlay)
   $('#register-link').on('click', events.onRegisterDirect)
+  $('.form-toggle').on('click', events.onFormToggle)
 })
 
 // use require with a reference to bundle the file and use it in this file
