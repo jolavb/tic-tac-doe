@@ -46,6 +46,7 @@ const newGameFail = function (error) {
 
 const updateGameSuccess = function (response) {
   store.game = response.game
+  logic.checkWin()
   console.log(store.game)
 }
 
