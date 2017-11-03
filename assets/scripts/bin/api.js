@@ -62,7 +62,7 @@ const updateGame = function () {
   let data = {
     'game': {
       'cell': {
-        'index': store.turnInfo.selected,
+        'index': store.turnInfo.selected.prop('id'),
         'value': store.turnInfo.value
       },
       'over': false

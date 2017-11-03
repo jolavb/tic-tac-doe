@@ -46,6 +46,7 @@ const newGameFail = function (error) {
 
 const updateGameSuccess = function (response) {
   store.game = response.game
+  $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
   logic.playerSwitch()
   console.log(store.game)
 }
