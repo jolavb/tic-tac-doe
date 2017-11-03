@@ -15,16 +15,6 @@ const playerSwitch = function () {
   }
 }
 
-const checkWin = function (callback) {
-  if(callback)
-}
-
-const getSum = (total, num) {
-  return total + num
-}
-
-
-
 
 
 module.exports = {
