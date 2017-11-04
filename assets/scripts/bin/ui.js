@@ -15,7 +15,7 @@ const signUpFail = function (error) {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  $('#overlay').toggleClass('hidden')
+  $('.overlay').toggleClass('hidden')
   $('.player-name').text(store.user.email)
   api.getGames()
     .then(getGameSuccess)
@@ -29,7 +29,7 @@ const signInFail = function (error) {
 }
 
 const changePassSuccess = function (response) {
-  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
 }
 
 const changePassFail = function (error) {
@@ -39,7 +39,7 @@ const changePassFail = function (error) {
 }
 
 const signoutSuccess = function (response) {
-  $('#overlay').toggleClass('hidden')
+  $('.overlay').toggleClass('hidden')
 }
 
 const signoutFail = function (response) {
