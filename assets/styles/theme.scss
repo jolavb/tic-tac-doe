@@ -62,9 +62,10 @@
 
 
 .player-info-section {
-  width: 300px;
+  width: 20%;
   height: 100%;
-  position: fixed;
+  position: relative;
+  float: left;
   text-align: center;
   color:$simpeblue;
   background:$simpyellow;
