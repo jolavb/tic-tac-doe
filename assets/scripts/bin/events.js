@@ -1,8 +1,13 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const logic = require('./logic.js')
 const store = require('./../store')
+
+// const getAllGames = function () {
+//   api.getGames()
+//     .then(ui.getGameSuccess)
+//     .catch(ui.getGameFail)
+// }
 
 const onRegistration = function (event) {
   event.preventDefault()
@@ -40,9 +45,6 @@ const onNewGame = function (event) {
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
-  api.getGames()
-    .then(ui.getGameSuccess)
-    .catch(ui.getGameFail)
 }
 
 const onPlay = function () {

@@ -1,3 +1,4 @@
+const api = require('./api')
 const store = require('./../store')
 const logic = require('./logic')
 
@@ -16,6 +17,9 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('#overlay').toggleClass('hidden')
   $('.player-name').text(store.user.email)
+  api.getGames()
+    .then(getGameSuccess)
+    .catch(getGameFail)
 }
 
 const signInFail = function (error) {
@@ -45,6 +49,9 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   store.game = response.game
   console.log(response)
+  api.getGames()
+    .then(getGameSuccess)
+    .catch(getGameFail)
 }
 
 const newGameFail = function (error) {
@@ -67,7 +74,8 @@ const updateGameFail = function (error) {
 }
 
 const getGameSuccess = function (response) {
-  console.log(response)
+  store.games = response.games
+  $('#total-games').text(store.games.length)
 }
 
 const getGameFail = function (error) {
