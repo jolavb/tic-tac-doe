@@ -2,12 +2,7 @@ const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./../store')
-
-// const getAllGames = function () {
-//   api.getGames()
-//     .then(ui.getGameSuccess)
-//     .catch(ui.getGameFail)
-// }
+const logic = require('./logic')
 
 const onRegistration = function (event) {
   event.preventDefault()
@@ -47,10 +42,22 @@ const onNewGame = function (event) {
     .catch(ui.newGameFail)
 }
 
+const test = function () {
+  console.log('reached')
+}
+
 const onPlay = function () {
-  store.turnInfo.selected = $(this)
-  ui.updateBoard()
-  api.updateGame()
+  if (!logic.checkOccupied(this)) {
+    store.turnInfo.selected = $(this)
+    ui.updateBoard()
+    api.updateGame('false')
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFail)
+  }
+}
+
+const onWin = function () {
+  api.updateGame('true')
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFail)
 }
@@ -82,5 +89,7 @@ module.exports = {
   toggleErr,
   goToRegistration,
   displayPassChange,
-  Cancel
+  Cancel,
+  test,
+  onWin
 }

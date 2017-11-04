@@ -60,8 +60,19 @@ const newGameFail = function (error) {
 
 const updateGameSuccess = function (response) {
   store.game = response.game
-  logic.checkWin()
-  console.log(store.game)
+  if (store.game.over !== true) {
+    const winner = logic.checkWin()
+    const events = require('./events')
+    if (winner) {
+      if (winner === 'x') {
+        $('#gameMessage').append('<p>Player X wins the game</p>')
+      } else if (winner === 'o') {
+        $('#gameMessage').append('<p>Player X wins the game</p>')
+      }
+      $('.gameresults').toggleClass('hidden')
+      events.onWin()
+    }
+  }
 }
 
 const updateBoard = function () {
