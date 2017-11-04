@@ -1,8 +1,13 @@
 const getFormFields = require('./../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const logic = require('./logic.js')
 const store = require('./../store')
+
+// const getAllGames = function () {
+//   api.getGames()
+//     .then(ui.getGameSuccess)
+//     .catch(ui.getGameFail)
+// }
 
 const onRegistration = function (event) {
   event.preventDefault()
@@ -59,6 +64,14 @@ const goToRegistration = function () {
   $('#registration').toggleClass('hidden')
 }
 
+const displayPassChange = function () {
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+}
+
+const Cancel = () => {
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -67,5 +80,7 @@ module.exports = {
   onNewGame,
   onPlay,
   toggleErr,
-  goToRegistration
+  goToRegistration,
+  displayPassChange,
+  Cancel
 }

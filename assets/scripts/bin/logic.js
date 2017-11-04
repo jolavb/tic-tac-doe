@@ -36,7 +36,12 @@ const checkWin = function () {
   }
 }
 
+const calcStats = () => {
+
+}
+
 module.exports = {
   playerSwitch,
-  checkWin
+  checkWin,
+  calcStats
 }

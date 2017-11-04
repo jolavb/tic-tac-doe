@@ -21,6 +21,17 @@ const signIn = function (data) {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiOrigin + '/games',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const changePassword = function (data) {
   data = JSON.stringify(data)
   return $.ajax({
@@ -88,5 +99,6 @@ module.exports = {
   changePassword,
   signout,
   newGame,
-  updateGame
+  updateGame,
+  getGames
 }

@@ -1,3 +1,4 @@
+const api = require('./api')
 const store = require('./../store')
 const logic = require('./logic')
 
@@ -14,8 +15,11 @@ const signUpFail = function (error) {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  $('#overlay').css('display', 'none')
+  $('#overlay').toggleClass('hidden')
   $('.player-name').text(store.user.email)
+  api.getGames()
+    .then(getGameSuccess)
+    .catch(getGameFail)
 }
 
 const signInFail = function (error) {
@@ -25,15 +29,17 @@ const signInFail = function (error) {
 }
 
 const changePassSuccess = function (response) {
-  console.log(response)
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
 }
 
 const changePassFail = function (error) {
+  $('.error-message').html('<p> Please Enter a Valid New Password</p>')
+  $('.error-box').toggleClass('hidden')
   console.log(error)
 }
 
 const signoutSuccess = function (response) {
-  console.log(response)
+  $('#overlay').toggleClass('hidden')
 }
 
 const signoutFail = function (response) {
@@ -43,6 +49,9 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   store.game = response.game
   console.log(response)
+  api.getGames()
+    .then(getGameSuccess)
+    .catch(getGameFail)
 }
 
 const newGameFail = function (error) {
@@ -64,6 +73,15 @@ const updateGameFail = function (error) {
   console.log(error)
 }
 
+const getGameSuccess = function (response) {
+  store.games = response.games
+  $('#total-games').text(store.games.length)
+}
+
+const getGameFail = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFail,
@@ -77,5 +95,7 @@ module.exports = {
   newGameFail,
   updateGameSuccess,
   updateGameFail,
-  updateBoard
+  updateBoard,
+  getGameSuccess,
+  getGameFail
 }
