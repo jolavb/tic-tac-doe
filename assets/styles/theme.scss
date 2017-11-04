@@ -190,11 +190,19 @@ th {
   background-position: center;
 }
 
-.gameresults{
+.inboard{
   position: absolute;
   width: 100%;
   height: 100%;
   padding: 15%;
+  background:$simpyellow;
+}
+
+.startgame{
+}
+
+.winner {
+  background-clip: content-box;
 }
 
 

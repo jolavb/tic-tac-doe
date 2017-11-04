@@ -47,8 +47,8 @@ const signoutFail = function (response) {
 }
 
 const newGameSuccess = function (response) {
+  clearBoard()
   store.game = response.game
-  console.log(response)
   api.getGames()
     .then(getGameSuccess)
     .catch(getGameFail)
@@ -64,20 +64,32 @@ const updateGameSuccess = function (response) {
     const winner = logic.checkWin()
     const events = require('./events')
     if (winner) {
+      flashWinner(winner)
       if (winner === 'x') {
-        $('#gameMessage').append('<p>Player X wins the game</p>')
+        $('#gameMessage').html('<p>Player X wins the game</p>')
       } else if (winner === 'o') {
-        $('#gameMessage').append('<p>Player X wins the game</p>')
+        $('#gameMessage').html('<p>Player O wins the game</p>')
       }
-      $('.gameresults').toggleClass('hidden')
       events.onWin()
     }
   }
 }
 
+const flashWinner = (winner) => {
+  const flash = setInterval(() => {
+    $('.player-' + winner).toggleClass('winner')
+  }, 200)
+
+  setTimeout(() => {
+    clearInterval(flash)
+    $('.message').toggleClass('hidden')
+  }, 2000)
+}
+
 const updateBoard = function () {
   logic.playerSwitch()
   $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
+  $(store.turnInfo.selected).addClass('player-' + store.turnInfo.value)
 }
 
 const updateGameFail = function (error) {
@@ -91,6 +103,12 @@ const getGameSuccess = function (response) {
 
 const getGameFail = function (error) {
   console.log(error)
+}
+
+const clearBoard = function () {
+  $('.col').css('background-image', '')
+  $('.col').removeClass('player-x')
+  $('.col').removeClass('player-x')
 }
 
 module.exports = {
@@ -108,5 +126,6 @@ module.exports = {
   updateGameFail,
   updateBoard,
   getGameSuccess,
-  getGameFail
+  getGameFail,
+  clearBoard
 }

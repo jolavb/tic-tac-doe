@@ -37,6 +37,7 @@ const onSignout = function (event) {
 
 const onNewGame = function (event) {
   event.preventDefault()
+  $(this).parent().toggleClass('hidden')
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
@@ -72,11 +73,11 @@ const goToRegistration = function () {
 }
 
 const displayPassChange = function () {
-  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
 }
 
 const Cancel = () => {
-  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
 }
 
 module.exports = {

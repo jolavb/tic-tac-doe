@@ -38,9 +38,8 @@
                   </tr>
                 </tbody>
               </table>
-              <button class='info-button' id='newGame' type='button' >New Game</button>
               <button class='info-button' id='displayChangePass' type='button'>Change Password</button>
-              <button class='info-button' id='signout' type='button'>Log Out</button>
+              <button class='signout' type='button'>Log Out</button>
             </section>
           </section>
           <section  class="col col-sm-10 main-area">
@@ -55,11 +54,17 @@
               <div class = 'col col-xs-4 cell' id='6'></div>
               <div class = 'col col-xs-4 cell' id='7'></div>
               <div class = 'col col-xs-4 cell' id='8'></div>
-              <div class= 'gameresults hidden'>
-                <legend>Game Message</legend>
+
+              <div class= 'message inboard hidden'>
+                <legend id='gameMessage-legend'></legend>
                 <div id='gameMessage'></div>
-                <button id='errorBtn' class='form-toggler'>Play Again</button>
-                <button id='errorBtn' class='form-toggler'>Sign Out</button>
+                <button class='newGame' id='inMessage' type='button' >Play Again</button>
+              </div>
+
+              <div class= 'startgame inboard'>
+                <legend id='startgame-legend'></legend>
+                <div id='startgamemessage'></div>
+                <button class='newGame' id='inboardNewGame' type='button' >New Game</button>
               </div>
             </div>
 
@@ -95,7 +100,6 @@
                       <button id='errorBtn' class='form-toggler'>OK</button>
                     </div>
             </section>
-
           </section >
         </div>
       </div>
