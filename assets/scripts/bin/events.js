@@ -40,6 +40,9 @@ const onNewGame = function (event) {
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
+  api.getGames()
+    .then(ui.getGameSuccess)
+    .catch(ui.getGameFail)
 }
 
 const onPlay = function () {
@@ -59,6 +62,14 @@ const goToRegistration = function () {
   $('#registration').toggleClass('hidden')
 }
 
+const displayPassChange = function () {
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+}
+
+const Cancel = () => {
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -67,5 +78,7 @@ module.exports = {
   onNewGame,
   onPlay,
   toggleErr,
-  goToRegistration
+  goToRegistration,
+  displayPassChange,
+  Cancel
 }

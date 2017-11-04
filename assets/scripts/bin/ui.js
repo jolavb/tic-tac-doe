@@ -14,7 +14,7 @@ const signUpFail = function (error) {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  $('#overlay').css('display', 'none')
+  $('#overlay').toggleClass('hidden')
   $('.player-name').text(store.user.email)
 }
 
@@ -25,15 +25,17 @@ const signInFail = function (error) {
 }
 
 const changePassSuccess = function (response) {
-  console.log(response)
+  $('#sign-in, #overlay, #change-password').toggleClass('hidden')
 }
 
 const changePassFail = function (error) {
+  $('.error-message').html('<p> Please Enter a Valid New Password</p>')
+  $('.error-box').toggleClass('hidden')
   console.log(error)
 }
 
 const signoutSuccess = function (response) {
-  console.log(response)
+  $('#overlay').toggleClass('hidden')
 }
 
 const signoutFail = function (response) {
@@ -64,6 +66,14 @@ const updateGameFail = function (error) {
   console.log(error)
 }
 
+const getGameSuccess = function (response) {
+  console.log(response)
+}
+
+const getGameFail = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFail,
@@ -77,5 +87,7 @@ module.exports = {
   newGameFail,
   updateGameSuccess,
   updateGameFail,
-  updateBoard
+  updateBoard,
+  getGameSuccess,
+  getGameFail
 }
