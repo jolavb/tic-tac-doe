@@ -45,7 +45,6 @@ const onNewGame = function (event) {
 
 const onPlay = function () {
   if (!logic.checkOccupied(this) && !store.game.over) {
-    console.log(store.game.over)
     store.turnInfo.selected = $(this)
     ui.updateBoard()
     api.updateGame('false')

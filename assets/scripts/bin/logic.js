@@ -20,17 +20,26 @@ const winCombos = {
   diaganal: [[0, 4, 8], [2, 4, 6]]
 }
 
-const isX = (element) => store.game.cells[element] === 'x'
-const isO = (element) => store.game.cells[element] === 'o'
+// let isX = (element, obj, array) => store.game.cells[element] === 'x'
+// let isO = (element, obj, array) => store.game.cells[element] === 'o'
 
-const checkWin = function () {
+const BuildChecks = function (game) {
+  const checks = {
+    isX: function (element) { return game[element] === 'x' },
+    isO: function (element) { return game[element] === 'o' }
+  }
+  return checks
+}
+
+const checkWin = function (game) {
   let winner
+  const checks = BuildChecks(game)
   for (const comboList in winCombos) {
     winCombos[comboList].forEach((combo) => {
-      if (combo.every(isX)) {
+      if (combo.every(checks.isX)) {
         winner = 'x'
       }
-      if (combo.every(isO)) {
+      if (combo.every(checks.isO)) {
         winner = 'o'
       }
     })
@@ -38,14 +47,30 @@ const checkWin = function () {
   return winner
 }
 
+const calcStats = () => {
+  const winners = {
+    xWins: 0,
+    oWins: 0,
+    noWin: 0
+  }
+  const games = store.games
+  games.forEach(function (game) {
+    const winner = checkWin(game.cells)
+    if (winner === 'x') {
+      winners.xWins++
+    } else if (winner === 'o') {
+      winners.oWins++
+    } else {
+      winners.noWin++
+    }
+  })
+  return winners
+}
+
 const checkOccupied = function (selected) {
   if ($(selected).css('background-image') !== 'none') {
     return true
   }
-}
-
-const calcStats = () => {
-
 }
 
 module.exports = {

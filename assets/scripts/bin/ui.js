@@ -12,15 +12,6 @@ const signUpFail = function (error) {
   console.log(error)
 }
 
-const signInSuccess = function (response) {
-  store.user = response.user
-  changeForm($('.startgame'), true)
-  $('.player-name').text(store.user.email)
-  api.getGames()
-    .then(getGameSuccess)
-    .catch(getGameFail)
-}
-
 const changeForm = function (form, overlay) {
   $('.overlay-form').each((index, obj) => {
     if (!$(obj).hasClass('hidden')) {
@@ -33,6 +24,15 @@ const changeForm = function (form, overlay) {
   if (overlay) {
     $('.overlay').toggleClass('hidden')
   }
+}
+
+const signInSuccess = function (response) {
+  store.user = response.user
+  changeForm($('.startgame'), true)
+  $('.player-name').text(store.user.email)
+  api.getGames()
+    .then(getGameSuccess)
+    .catch(getGameFail)
 }
 
 const signInFail = function (error) {
@@ -75,7 +75,7 @@ const newGameFail = function (error) {
 const updateGameSuccess = function (response) {
   store.game = response.game
   if (store.game.over !== true) {
-    const winner = logic.checkWin()
+    const winner = logic.checkWin(store.game.cells)
     const events = require('./events')
     if (winner) {
       flashWinner(winner)
@@ -87,6 +87,10 @@ const updateGameSuccess = function (response) {
       events.onWin()
     }
   }
+}
+
+const updateGameFail = function (error) {
+  console.log(error)
 }
 
 const flashWinner = (winner) => {
@@ -106,12 +110,11 @@ const updateBoard = function () {
   $(store.turnInfo.selected).addClass('player-' + store.turnInfo.value)
 }
 
-const updateGameFail = function (error) {
-  console.log(error)
-}
-
 const getGameSuccess = function (response) {
   store.games = response.games
+  const stats = logic.calcStats()
+  $('#games-won').text(stats.xWins)
+  $('#games-lost').text(stats.oWins)
   $('#total-games').text(store.games.length)
 }
 
