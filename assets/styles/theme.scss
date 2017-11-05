@@ -43,6 +43,26 @@
   background: grey;
 }
 
+.barchart {
+  height: 150px;
+  background-color: $simpeblue;
+  padding: 5px;
+}
+
+.td-bar {
+  position: relative;
+
+  & > .bar {
+    left: 10%;
+    position:absolute;
+    bottom:0;
+    height: 90%;
+    width: 70%;
+    background-color: $simpyellow;
+    opacity: .7;
+  }
+}
+
 //
 //
 //
