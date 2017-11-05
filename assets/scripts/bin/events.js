@@ -37,18 +37,15 @@ const onSignout = function (event) {
 
 const onNewGame = function (event) {
   event.preventDefault()
-  $(this).parent().toggleClass('hidden')
+  ui.changeForm()
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFail)
 }
 
-const test = function () {
-  console.log('reached')
-}
-
 const onPlay = function () {
-  if (!logic.checkOccupied(this)) {
+  if (!logic.checkOccupied(this) && !store.game.over) {
+    console.log(store.game.over)
     store.turnInfo.selected = $(this)
     ui.updateBoard()
     api.updateGame('false')
@@ -73,11 +70,16 @@ const goToRegistration = function () {
 }
 
 const displayPassChange = function () {
-  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
+  ui.changeForm('#change-password', true)
+  console.log('events')
 }
 
 const Cancel = () => {
-  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
+  if (store.game) {
+    ui.changeForm(false, true)
+  } else {
+    ui.changeForm('.startgame', true)
+  }
 }
 
 module.exports = {
@@ -91,6 +93,5 @@ module.exports = {
   goToRegistration,
   displayPassChange,
   Cancel,
-  test,
   onWin
 }

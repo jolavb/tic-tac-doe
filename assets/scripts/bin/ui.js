@@ -3,8 +3,7 @@ const store = require('./../store')
 const logic = require('./logic')
 
 const signUpSuccess = function (response) {
-  $('#registration').toggleClass('hidden')
-  $('#sign-in').toggleClass('hidden')
+  changeForm('#sign-in')
 }
 
 const signUpFail = function (error) {
@@ -15,11 +14,25 @@ const signUpFail = function (error) {
 
 const signInSuccess = function (response) {
   store.user = response.user
-  $('.overlay').toggleClass('hidden')
+  changeForm($('.startgame'), true)
   $('.player-name').text(store.user.email)
   api.getGames()
     .then(getGameSuccess)
     .catch(getGameFail)
+}
+
+const changeForm = function (form, overlay) {
+  $('.overlay-form').each((index, obj) => {
+    if (!$(obj).hasClass('hidden')) {
+      $(obj).toggleClass('hidden')
+    }
+  })
+  if (form) {
+    $(form).toggleClass('hidden')
+  }
+  if (overlay) {
+    $('.overlay').toggleClass('hidden')
+  }
 }
 
 const signInFail = function (error) {
@@ -29,7 +42,7 @@ const signInFail = function (error) {
 }
 
 const changePassSuccess = function (response) {
-  $('#sign-in, .overlay, #change-password').toggleClass('hidden')
+  changeForm('#sign-in')
 }
 
 const changePassFail = function (error) {
@@ -39,7 +52,8 @@ const changePassFail = function (error) {
 }
 
 const signoutSuccess = function (response) {
-  $('.overlay').toggleClass('hidden')
+  clearBoard()
+  changeForm('#sign-in', true)
 }
 
 const signoutFail = function (response) {
@@ -79,10 +93,10 @@ const flashWinner = (winner) => {
   const flash = setInterval(() => {
     $('.player-' + winner).toggleClass('winner')
   }, 200)
-
   setTimeout(() => {
     clearInterval(flash)
-    $('.message').toggleClass('hidden')
+    clearBoard()
+    changeForm('.message')
   }, 2000)
 }
 
@@ -127,5 +141,6 @@ module.exports = {
   updateBoard,
   getGameSuccess,
   getGameFail,
-  clearBoard
+  clearBoard,
+  changeForm
 }
