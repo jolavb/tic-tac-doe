@@ -63,9 +63,6 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
-  api.getGames()
-    .then(getGameSuccess)
-    .catch(getGameFail)
 }
 
 const newGameFail = function (error) {
@@ -85,6 +82,9 @@ const updateGameSuccess = function (response) {
         $('#gameMessage').html('<p>Player O wins the game</p>')
       }
       events.onWin()
+      api.getGames()
+        .then(getGameSuccess)
+        .catch(getGameFail)
     }
   }
 }
@@ -94,8 +94,13 @@ const updateGameFail = function (error) {
 }
 
 const flashWinner = (winner) => {
+  store.WinningCombo.forEach(function (element) {
+    const target = $('.game-board').children()[element]
+    $(target).addClass('wins')
+  })
+
   const flash = setInterval(() => {
-    $('.player-' + winner).toggleClass('winner')
+    $('.' + 'wins').toggleClass('winner')
   }, 200)
   setTimeout(() => {
     clearInterval(flash)
@@ -107,14 +112,13 @@ const flashWinner = (winner) => {
 const updateBoard = function () {
   logic.playerSwitch()
   $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
-  $(store.turnInfo.selected).addClass('player-' + store.turnInfo.value)
 }
 
 const getGameSuccess = function (response) {
   store.games = response.games
   const stats = logic.calcStats()
-  $('#games-won').text(stats.xWins)
-  $('#games-lost').text(stats.oWins)
+  $('#games-won').text(stats.oWins)
+  $('#games-lost').text(stats.xWins)
   $('#total-games').text(store.games.length)
 }
 
@@ -124,8 +128,7 @@ const getGameFail = function (error) {
 
 const clearBoard = function () {
   $('.col').css('background-image', '')
-  $('.col').removeClass('player-x')
-  $('.col').removeClass('player-x')
+  $('.col').removeClass('wins')
 }
 
 module.exports = {

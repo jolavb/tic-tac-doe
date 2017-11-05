@@ -20,9 +20,6 @@ const winCombos = {
   diaganal: [[0, 4, 8], [2, 4, 6]]
 }
 
-// let isX = (element, obj, array) => store.game.cells[element] === 'x'
-// let isO = (element, obj, array) => store.game.cells[element] === 'o'
-
 const BuildChecks = function (game) {
   const checks = {
     isX: function (element) { return game[element] === 'x' },
@@ -38,6 +35,7 @@ const checkWin = function (game) {
     winCombos[comboList].forEach((combo) => {
       if (combo.every(checks.isX)) {
         winner = 'x'
+        store.WinningCombo = combo
       }
       if (combo.every(checks.isO)) {
         winner = 'o'
