@@ -102,6 +102,7 @@ const flashWinner = (winner) => {
   const flash = setInterval(() => {
     $('.' + 'wins').toggleClass('winner')
   }, 200)
+
   setTimeout(() => {
     clearInterval(flash)
     clearBoard()
@@ -117,8 +118,13 @@ const updateBoard = function () {
 const getGameSuccess = function (response) {
   store.games = response.games
   const stats = logic.calcStats()
+  const total = stats.oWins + stats.xWins
+  const wonPercent = (stats.oWins / total) * 100
+  const lostPercent = 100 - wonPercent
   $('#games-won').text(stats.oWins)
   $('#games-lost').text(stats.xWins)
+  $('.bar-won').css('height', wonPercent + '%')
+  $('.bar-lost').css('height', lostPercent + '%')
   $('#total-games').text(store.games.length)
 }
 
@@ -129,6 +135,7 @@ const getGameFail = function (error) {
 const clearBoard = function () {
   $('.col').css('background-image', '')
   $('.col').removeClass('wins')
+  $('.col').removeClass('winnner')
 }
 
 module.exports = {
