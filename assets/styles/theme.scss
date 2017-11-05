@@ -172,8 +172,9 @@ th {
   }
 }
 
-.main-area{
+.main-area {
   text-align: center;
+  background-image: url('/assets/images/homescream.jpg');
 }
 
 .game-board{
@@ -195,17 +196,22 @@ th {
   width: 100%;
   height: 100%;
   padding: 15%;
-  background:$simpyellow;
 }
 
-.startgame{
+.startgame {
+
 }
 
 .winner {
   background-clip: content-box;
 }
 
-
+.homescream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 135%;
+}
 
 
 .col{
