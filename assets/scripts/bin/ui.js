@@ -116,8 +116,6 @@ const flashWinner = (winner) => {
 const updateBoard = function () {
   logic.playerSwitch()
   $(store.turnInfo.selected).html('<img src=' + store.turnInfo.image + ' class = played-image>')
-  // ('background-image', 'url(' + store.turnInfo.image + ')')
-  // $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
 }
 
 const getGameSuccess = function (response) {
