@@ -15,11 +15,11 @@
 
 
 .overlay-form {
-  padding-top: 100px;
+  padding-top: 10px;
   position: absolute;
   width:100%;
   height:100%;
-  background-color: rgba(0,0,0,0.5);
+  background: $simpelightblue;
   color: $white;
   z-index: 99;
   & > legend {
@@ -37,6 +37,11 @@
     background-color: $simpeblue;
     color: $simpyellow;
   }
+
+  & > img {
+    max-height: 50%;
+  }
+
 }
 
 .error-box{
@@ -146,9 +151,6 @@ th {
   padding: 15%;
 }
 
-.startgame {
-
-}
 
 .winner {
   visibility: hidden;
