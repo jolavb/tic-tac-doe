@@ -64,7 +64,8 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
-  console.log(response)
+  store.gameWatcher = api.watchGame()
+  console.log(store.gameWatcher)
 }
 
 const newGameFail = function (error) {

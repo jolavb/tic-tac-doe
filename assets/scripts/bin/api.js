@@ -1,5 +1,6 @@
 const config = require('../config.js')
 const store = require('./../store')
+const resourceWatcher = require('./../resource-watcher-0.1.0.js')
 
 const signUp = function (data) {
   data = JSON.stringify(data)
@@ -93,6 +94,12 @@ const updateGame = function (over) {
   })
 }
 
+const watchGame = function () {
+  return resourceWatcher.resourceWatcher(config.apiOrigin + '/games/' + store.game.id + '/watch', {
+    Authorization: 'Token token=' + store.user.token
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -100,5 +107,6 @@ module.exports = {
   signout,
   newGame,
   updateGame,
-  getGames
+  getGames,
+  watchGame
 }
