@@ -39,6 +39,7 @@ const checkWin = function (game) {
       }
       if (combo.every(checks.isO)) {
         winner = 'o'
+        store.WinningCombo = combo
       }
     })
   }

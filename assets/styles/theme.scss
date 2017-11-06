@@ -43,26 +43,7 @@
   background: grey;
 }
 
-.barchart {
-  border-top: 10px solid $simpeblue;
-  height: 150px;
-  background-color: $simpeblue;
-  padding: 5px;
-}
 
-.td-bar {
-  position: relative;
-
-  & > .bar {
-    left: 10%;
-    position:absolute;
-    bottom:0;
-    height: 100%;
-    width: 70%;
-    background-color: $simpyellow;
-    opacity: .7;
-  }
-}
 
 .container-fluid {
   height: 100%;
@@ -88,6 +69,7 @@
   & > table {
     margin-bottom: 20px;
     width: 100%;
+    display: none;
 }
 
   & > button {
@@ -108,6 +90,28 @@ th {
   }
 }
 
+.barchart {
+  border-top: 10px solid $simpeblue;
+  height: 150px;
+  background-color: $simpeblue;
+  padding: 5px;
+}
+
+.td-bar {
+  position: relative;
+
+  & > .bar {
+    left: 10%;
+    position:absolute;
+    bottom:0;
+    height: 100%;
+    width: 70%;
+    background-color: $simpyellow;
+    opacity: .7;
+    color:$red;
+  }
+}
+
 .main-area {
   text-align: center;
   background-image: url('/assets/images/homescream.jpg');
@@ -115,10 +119,18 @@ th {
 
 .game-board{
   position: relative;
+  bottom: 0;
   width: 50%;
   margin: 0 auto;
-  top: 10%;
 }
+
+.played-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
 
 .cell {
   padding-top: 33.33333%;
@@ -139,7 +151,7 @@ th {
 }
 
 .winner {
-  background-clip: content-box;
+  visibility: hidden;
 }
 
 .homescream {

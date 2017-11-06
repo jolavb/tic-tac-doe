@@ -53,6 +53,7 @@ const changePassFail = function (error) {
 
 const signoutSuccess = function (response) {
   clearBoard()
+  $('table').hide()
   changeForm('#sign-in', true)
 }
 
@@ -95,7 +96,8 @@ const updateGameFail = function (error) {
 
 const flashWinner = (winner) => {
   store.WinningCombo.forEach(function (element) {
-    const target = $('.game-board').children()[element]
+    console.log(element)
+    const target = $('.game-board').children()[element].firstElementChild
     $(target).addClass('wins')
   })
 
@@ -112,7 +114,9 @@ const flashWinner = (winner) => {
 
 const updateBoard = function () {
   logic.playerSwitch()
-  $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
+  $(store.turnInfo.selected).html('<img src=' + store.turnInfo.image + ' class = played-image>')
+  // ('background-image', 'url(' + store.turnInfo.image + ')')
+  // $(store.turnInfo.selected).css('background-image', 'url(' + store.turnInfo.image + ')')
 }
 
 const getGameSuccess = function (response) {
@@ -121,11 +125,12 @@ const getGameSuccess = function (response) {
   const total = stats.oWins + stats.xWins
   const wonPercent = (stats.oWins / total) * 100
   const lostPercent = 100 - wonPercent
-  $('#games-won').text(stats.oWins)
-  $('#games-lost').text(stats.xWins)
+  $('.bar-won').html('<p>' + stats.oWins + '</p>')
+  $('.bar-lost').html('<p>' + stats.xWins + '</p>')
+  $('.bar-total').html('<p>' + store.games.length + '</p>')
   $('.bar-won').css('height', wonPercent + '%')
   $('.bar-lost').css('height', lostPercent + '%')
-  $('#total-games').text(store.games.length)
+  $('table').show(500)
 }
 
 const getGameFail = function (error) {
@@ -133,7 +138,7 @@ const getGameFail = function (error) {
 }
 
 const clearBoard = function () {
-  $('.col').css('background-image', '')
+  $('.cell').html('')
   $('.col').removeClass('wins')
   $('.col').removeClass('winnner')
 }
