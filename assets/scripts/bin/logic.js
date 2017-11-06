@@ -4,11 +4,11 @@ const playerSwitch = function () {
   const turnInfo = store.turnInfo
 
   if (turnInfo.player_x === true) {
-    turnInfo.image = 'assets/images/donut.jpg'
+    turnInfo.image = '/public/donut.jpg'
     turnInfo.value = 'o'
     turnInfo.player_x = false
   } else {
-    turnInfo.image = 'assets/images/rods.jpg'
+    turnInfo.image = '/public/rods.jpg'
     turnInfo.value = 'x'
     turnInfo.player_x = true
   }
