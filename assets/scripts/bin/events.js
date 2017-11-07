@@ -44,7 +44,7 @@ const onNewGame = function (event) {
 }
 
 const onPlay = function () {
-  if (!logic.checkOccupied(this) && !store.game.over) {
+  if (logic.checkOccupied(this) && !store.game.over) {
     store.turnInfo.selected = $(this)
     ui.updateBoard()
     api.updateGame('false')
@@ -94,6 +94,10 @@ const Cancel = () => {
   }
 }
 
+const back = function () {
+  ui.changeForm('#sign-in')
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -106,6 +110,10 @@ module.exports = {
   displayPassChange,
   Cancel,
   onWin,
+<<<<<<< HEAD
   displayMultiPlayer,
   onJoinGame
+=======
+  back
+>>>>>>> js
 }

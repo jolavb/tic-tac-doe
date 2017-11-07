@@ -6,10 +6,8 @@ const signUpSuccess = function (response) {
   changeForm('#sign-in')
 }
 
-const signUpFail = function (error) {
-  $('.error-message').html('<p> Invalid Registration </p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const signUpFail = function () {
+  ErrorMessage('Invalid Registration')
 }
 
 const changeForm = function (form, overlay) {
@@ -35,20 +33,16 @@ const signInSuccess = function (response) {
     .catch(getGameFail)
 }
 
-const signInFail = function (error) {
-  $('.error-message').html('<p> Please Enter a Valid Email and Password</p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const signInFail = function () {
+  ErrorMessage('Please Enter a Valid Email and Password')
 }
 
 const changePassSuccess = function (response) {
   changeForm('#sign-in')
 }
 
-const changePassFail = function (error) {
-  $('.error-message').html('<p> Please Enter a Valid New Password</p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const changePassFail = function () {
+  ErrorMessage('Please Enter a Valid New Password')
 }
 
 const signoutSuccess = function (response) {
@@ -58,19 +52,22 @@ const signoutSuccess = function (response) {
 }
 
 const signoutFail = function (response) {
-  console.log(response)
+  ErrorMessage('Error Signing Out!')
 }
 
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
+<<<<<<< HEAD
   store.watchGame = api.watchGame(store.game.id)
   store.watchGame.on('change', onGameChange)
   console.log(store.game.id)
+=======
+>>>>>>> js
 }
 
-const newGameFail = function (error) {
-  console.log(error)
+const newGameFail = function () {
+  ErrorMessage('Failed to Create Game!')
 }
 
 const updateGameSuccess = function (response) {
@@ -79,12 +76,17 @@ const updateGameSuccess = function (response) {
     const winner = logic.checkWin(store.game.cells)
     const events = require('./events')
     if (winner) {
-      flashWinner(winner)
-      if (winner === 'x') {
-        $('#gameMessage').html('<p>Player X wins the game</p>')
-      } else if (winner === 'o') {
-        $('#gameMessage').html('<p>Player O wins the game</p>')
+      if (winner === 'o') {
+        $('#gameMessage-legend').html('<p>You Win Whoo Hoo!!</p>')
+        $('#gameImage').attr('src', 'https://vignette.wikia.nocookie.net/simpsons/images/0/04/Dancin_homer.png/revision/latest?cb=20100131213740')
+      } else if (winner === 'x') {
+        $('#gameMessage-legend').html('<p>DOH! You Lose</p>')
+        $('#gameImage').attr('src', 'https://i.pinimg.com/originals/3a/11/68/3a116884945f870924f1ffd3f36fc015.jpg')
+      } else if (winner === 'noone') {
+        $('#gameMessage-legend').html('<p>You\'re all losers!!</p>')
+        $('#gameImage').attr('src', 'http://www.officialpsds.com/images/thumbs/The-Simpsons-Mr-Burns-psd72388.png')
       }
+      flashWinner(winner)
       events.onWin()
       api.getGames()
         .then(getGameSuccess)
@@ -93,26 +95,30 @@ const updateGameSuccess = function (response) {
   }
 }
 
-const updateGameFail = function (error) {
-  console.log(error)
+const updateGameFail = function () {
+  ErrorMessage('Error updating game!')
 }
 
 const flashWinner = (winner) => {
-  store.WinningCombo.forEach(function (element) {
-    console.log(element)
-    const target = $('.game-board').children()[element].firstElementChild
-    $(target).addClass('wins')
-  })
+  if (winner !== 'noone') {
+    store.WinningCombo.forEach(function (element) {
+      const target = $('.game-board').children()[element]
+      $(target).addClass('wins')
+    })
 
-  const flash = setInterval(() => {
-    $('.' + 'wins').toggleClass('winner')
-  }, 200)
+    const flash = setInterval(() => {
+      $('.' + 'wins').toggleClass('winner')
+    }, 200)
 
-  setTimeout(() => {
-    clearInterval(flash)
+    setTimeout(() => {
+      clearInterval(flash)
+      clearBoard()
+      changeForm('.message')
+    }, 2000)
+  } else {
     clearBoard()
     changeForm('.message')
-  }, 2000)
+  }
 }
 
 const updateBoard = function () {
@@ -134,8 +140,13 @@ const getGameSuccess = function (response) {
   $('table').show(500)
 }
 
-const getGameFail = function (error) {
-  console.log(error)
+const getGameFail = function () {
+  ErrorMessage('Error loading previous games!')
+}
+
+const ErrorMessage = function (error) {
+  $('.error-message').text(error)
+  $('.error-box').toggleClass('hidden')
 }
 
 const joinGameSuccess = function (response) {
@@ -189,6 +200,7 @@ const clearBoard = function () {
   $('.cell').html('')
   $('.col').removeClass('wins')
   $('.col').removeClass('winnner')
+  store.turnInfo.player_x = true
 }
 
 module.exports = {
@@ -209,6 +221,10 @@ module.exports = {
   getGameFail,
   clearBoard,
   changeForm,
+<<<<<<< HEAD
   joinGameSuccess,
   joinGameFail
+=======
+  ErrorMessage
+>>>>>>> js
 }

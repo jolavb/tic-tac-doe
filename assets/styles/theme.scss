@@ -1,4 +1,9 @@
 
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+}
+
 .overlay {
   position: absolute;
   height: 100%;
@@ -15,6 +20,7 @@
 
 
 .overlay-form {
+  border-radius: 3%;
   padding-top: 10px;
   position: absolute;
   width:100%;
@@ -31,11 +37,20 @@
     color: $simpeblue;
   }
   & > button {
+    font-size: large;
+    height: 10%;
     margin-top: 5px;
     margin-bottom: 10px;
-    width: 25%;
+    width: 50%;
     background-color: $simpeblue;
     color: $simpyellow;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+  & > div >img {
+    max-height: 50%;
   }
 
   & > img {
@@ -45,7 +60,9 @@
 }
 
 .error-box{
-  background: grey;
+  background: $simp-solid-lightblue;
+  opacity: 1;
+  font-size: 20px
 }
 
 
@@ -78,9 +95,15 @@
 }
 
   & > button {
+    background: $simpeblue;
+    color: $simpyellow;
     display: block;
     height: 15%;
     width: 100%;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 }
 
@@ -142,18 +165,25 @@ th {
   }
 
 .cell {
+  background: $transwhite;
   padding-top: 33.33333%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 10%;
+  border: 2px solid $simpyellow;
+  &:hover{
+    position: relative;
+    bottom: 1px;
+  }
 }
 
-.inboard{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 15%;
-}
+// .inboard{
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   padding: 15%;
+// }
 
 
 .winner {
