@@ -17,4 +17,6 @@ $(() => {
   $('#register-link').on('click', events.goToRegistration)
   $('#displayChangePass').on('click', events.displayPassChange)
   $('.cancel').on('click', events.Cancel)
+  $('#displayMulti').on('click', events.displayMultiPlayer)
+  $('#Multi-Player-form').on('submit', events.onJoinGame)
 })

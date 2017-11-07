@@ -38,6 +38,7 @@
                   </tr>
                 </tbody>
               </table>
+              <button id='displayMulti' type='button'>Multi Player Options</button>
               <button class='info-button' id='displayChangePass' type='button'>Change Password</button>
               <button class='signout' type='button'>Log Out</button>
             </section>
@@ -97,7 +98,16 @@
                 <div id='startgamemessage'></div>
                 <button class='newGame' id='inboardNewGame' type='button' >New Game</button>
               </div>
+
+              <form id='Multi-Player-form' class ='overlay-form Multi-Player hidden'>
+                <legend id='invite-legend'>Multi-Player Options</legend>
+                <input type='number' id='game-id' placeholder="Game ID">
+                <button type='submit'> Join Game</button>
+                <button class = 'cancel' type='button'>Cancel</button>
+              </form>
+
             </div>
+
           </section >
           <div class ='overlay'></div>
         </div>

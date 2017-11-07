@@ -64,8 +64,9 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
-  store.gameWatcher = api.watchGame()
-  console.log(store.gameWatcher)
+  store.watchGame = api.watchGame(store.game.id)
+  store.watchGame.on('change', onGameChange)
+  console.log(store.game.id)
 }
 
 const newGameFail = function (error) {
@@ -137,6 +138,53 @@ const getGameFail = function (error) {
   console.log(error)
 }
 
+const joinGameSuccess = function (response) {
+  changeForm(false, true)
+  const id = $('#game-id').val()
+  store.watchGame = api.watchGame(id)
+  store.watchGame.on('change', onGameChange)
+  store.game = response.game
+}
+
+const joinGameFail = function (error) {
+  console.log(error)
+}
+
+const onGameChange = function (data) {
+  console.log(data)
+  if (data.game && data.game.cells) {
+    const diff = changes => {
+      const before = changes[0]
+      const after = changes[1]
+      for (let i = 0; i < after.length; i++) {
+        if (before[i] !== after[i]) {
+          return {
+            index: i,
+            value: after[i]
+          }
+        }
+      }
+
+      return { index: -1, value: '' }
+    }
+
+    const cell = diff(data.game.cells)
+    // const boardCell = $('.game-board').children()[cell.index]
+
+    let img = ''
+    if (cell.value === 'x') {
+      img = 'https://i.imgur.com/2f8cJVF.jpg'
+    } else {
+      img = 'https://i.imgur.com/rq7dJ2L.jpg'
+    }
+    $('[id=' + cell.index + ']').html('<img src=' + img + ' class = played-image>')
+
+    console.log(cell)
+  } else if (data.timeout) {
+    store.watchGame.close()
+  }
+}
+
 const clearBoard = function () {
   $('.cell').html('')
   $('.col').removeClass('wins')
@@ -160,5 +208,7 @@ module.exports = {
   getGameSuccess,
   getGameFail,
   clearBoard,
-  changeForm
+  changeForm,
+  joinGameSuccess,
+  joinGameFail
 }
