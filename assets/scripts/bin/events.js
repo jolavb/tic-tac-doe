@@ -73,19 +73,6 @@ const displayPassChange = function () {
   console.log('events')
 }
 
-const displayMultiPlayer = () => {
-  ui.changeForm('#Multi-Player-form', true)
-}
-
-const onJoinGame = (event) => {
-  event.preventDefault()
-  const id = $('#game-id').val()
-  console.log(id)
-  api.joinGame(id)
-    .then(ui.joinGameSuccess)
-    .catch(ui.joinGameFail)
-}
-
 const Cancel = () => {
   if (store.game) {
     ui.changeForm(false, true)
@@ -110,10 +97,5 @@ module.exports = {
   displayPassChange,
   Cancel,
   onWin,
-<<<<<<< HEAD
-  displayMultiPlayer,
-  onJoinGame
-=======
   back
->>>>>>> js
 }

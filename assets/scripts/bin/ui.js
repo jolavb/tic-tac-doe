@@ -58,12 +58,9 @@ const signoutFail = function (response) {
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
-<<<<<<< HEAD
   store.watchGame = api.watchGame(store.game.id)
   store.watchGame.on('change', onGameChange)
   console.log(store.game.id)
-=======
->>>>>>> js
 }
 
 const newGameFail = function () {
@@ -221,10 +218,7 @@ module.exports = {
   getGameFail,
   clearBoard,
   changeForm,
-<<<<<<< HEAD
   joinGameSuccess,
-  joinGameFail
-=======
+  joinGameFail,
   ErrorMessage
->>>>>>> js
 }
