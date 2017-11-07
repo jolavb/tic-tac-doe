@@ -23,7 +23,10 @@ const winCombos = {
 const BuildChecks = function (game) {
   const checks = {
     isX: function (element) { return game[element] === 'x' },
-    isO: function (element) { return game[element] === 'o' }
+    isO: function (element) { return game[element] === 'o' },
+    isBoth: function (element, obj) {
+      return (element === 'x' || element === 'o')
+    }
   }
   return checks
 }
@@ -42,6 +45,9 @@ const checkWin = function (game) {
         store.WinningCombo = combo
       }
     })
+  }
+  if (!winner && game.every(checks.isBoth)) {
+    winner = 'noone'
   }
   return winner
 }

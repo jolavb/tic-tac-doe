@@ -77,12 +77,14 @@ const updateGameSuccess = function (response) {
     const winner = logic.checkWin(store.game.cells)
     const events = require('./events')
     if (winner) {
-      flashWinner(winner)
       if (winner === 'x') {
         $('#gameMessage').html('<p>Player X wins the game</p>')
       } else if (winner === 'o') {
         $('#gameMessage').html('<p>Player O wins the game</p>')
+      } else if (winner === 'noone') {
+        $('#gameMessage').html('<p>No One Wins</p>')
       }
+      flashWinner(winner)
       events.onWin()
       api.getGames()
         .then(getGameSuccess)
@@ -96,21 +98,26 @@ const updateGameFail = function (error) {
 }
 
 const flashWinner = (winner) => {
-  store.WinningCombo.forEach(function (element) {
-    console.log(element)
-    const target = $('.game-board').children()[element].firstElementChild
-    $(target).addClass('wins')
-  })
+  if (winner !== 'noone') {
+    store.WinningCombo.forEach(function (element) {
+      console.log(element)
+      const target = $('.game-board').children()[element].firstElementChild
+      $(target).addClass('wins')
+    })
 
-  const flash = setInterval(() => {
-    $('.' + 'wins').toggleClass('winner')
-  }, 200)
+    const flash = setInterval(() => {
+      $('.' + 'wins').toggleClass('winner')
+    }, 200)
 
-  setTimeout(() => {
-    clearInterval(flash)
+    setTimeout(() => {
+      clearInterval(flash)
+      clearBoard()
+      changeForm('.message')
+    }, 2000)
+  } else {
     clearBoard()
     changeForm('.message')
-  }, 2000)
+  }
 }
 
 const updateBoard = function () {
