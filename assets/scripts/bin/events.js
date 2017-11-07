@@ -81,6 +81,10 @@ const Cancel = () => {
   }
 }
 
+const back = function () {
+  ui.changeForm('#sign-in')
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -92,5 +96,6 @@ module.exports = {
   goToRegistration,
   displayPassChange,
   Cancel,
-  onWin
+  onWin,
+  back
 }

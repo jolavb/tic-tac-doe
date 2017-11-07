@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -66,10 +67,12 @@
 
               <form id='registration' class ='overlay-form hidden'>
                 <legend> Register </legend>
+                <img src='https://images.techhive.com/images/idge/imported/article/cio/2013/01/08/homer-smart-big-100336365-orig.png' alt='smarthomer'>
                 <input name="credentials[email]" type= 'text' placeholder="email">
                 <input name="credentials[password]" type="password" placeholder="password">
                 <input name="credentials[password_confirmation]" type="password" placeholder="re-enter password">
                 <button class = 'submit' type='submit'>Register</button>
+                <button class = 'cancel-reg' type='button'>Back</button>
               </form>
 
                <form id='change-password'  class ='overlay-form hidden'>
@@ -82,6 +85,7 @@
 
               <div class= 'overlay-form error-box hidden'>
                 <legend> Error </legend>
+                <img src='https://i.pinimg.com/originals/3a/11/68/3a116884945f870924f1ffd3f36fc015.jpg' alt='doh'>
                 <div class='error-message'></div>
                 <button id='errorBtn' class='form-toggler'>OK</button>
               </div>
@@ -93,7 +97,8 @@
               </div>
 
               <div class= 'overlay-form startgame inboard hidden'>
-                <legend id='startgame-legend'></legend>
+                <legend id='startgame-legend'>New Game</legend>
+                <img src = 'https://i.pinimg.com/originals/38/74/ca/3874cafa5a58d2b47d5a50d659f1fada.png'>
                 <div id='startgamemessage'></div>
                 <button class='newGame' id='inboardNewGame' type='button' >New Game</button>
               </div>

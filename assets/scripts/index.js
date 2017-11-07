@@ -16,4 +16,5 @@ $(() => {
   $('#register-link').on('click', events.goToRegistration)
   $('#displayChangePass').on('click', events.displayPassChange)
   $('.cancel').on('click', events.Cancel)
+  $('.cancel-reg').on('click', events.back)
 })

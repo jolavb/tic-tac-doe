@@ -1,4 +1,9 @@
 
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+}
+
 .overlay {
   position: absolute;
   height: 100%;
@@ -31,11 +36,16 @@
     color: $simpeblue;
   }
   & > button {
+    height: 10%;
     margin-top: 5px;
     margin-bottom: 10px;
-    width: 25%;
+    width: 50%;
     background-color: $simpeblue;
     color: $simpyellow;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 
   & > img {
@@ -45,7 +55,9 @@
 }
 
 .error-box{
-  background: grey;
+  background: $simp-solid-lightblue;
+  opacity: 1;
+  font-size: 20px
 }
 
 
