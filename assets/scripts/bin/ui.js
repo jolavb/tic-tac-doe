@@ -6,10 +6,8 @@ const signUpSuccess = function (response) {
   changeForm('#sign-in')
 }
 
-const signUpFail = function (error) {
-  $('.error-message').html('<p> Invalid Registration </p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const signUpFail = function () {
+  ErrorMessage('Invalid Registration')
 }
 
 const changeForm = function (form, overlay) {
@@ -35,20 +33,16 @@ const signInSuccess = function (response) {
     .catch(getGameFail)
 }
 
-const signInFail = function (error) {
-  $('.error-message').html('<p> Please Enter a Valid Email and Password</p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const signInFail = function () {
+  ErrorMessage('Please Enter a Valid Email and Password')
 }
 
 const changePassSuccess = function (response) {
   changeForm('#sign-in')
 }
 
-const changePassFail = function (error) {
-  $('.error-message').html('<p> Please Enter a Valid New Password</p>')
-  $('.error-box').toggleClass('hidden')
-  console.log(error)
+const changePassFail = function () {
+  ErrorMessage('Please Enter a Valid New Password')
 }
 
 const signoutSuccess = function (response) {
@@ -58,17 +52,16 @@ const signoutSuccess = function (response) {
 }
 
 const signoutFail = function (response) {
-  console.log(response)
+  ErrorMessage('Error Signing Out!')
 }
 
 const newGameSuccess = function (response) {
   clearBoard()
   store.game = response.game
-  console.log(response)
 }
 
-const newGameFail = function (error) {
-  console.log(error)
+const newGameFail = function () {
+  ErrorMessage('Failed to Create Game!')
 }
 
 const updateGameSuccess = function (response) {
@@ -96,15 +89,14 @@ const updateGameSuccess = function (response) {
   }
 }
 
-const updateGameFail = function (error) {
-  console.log(error)
+const updateGameFail = function () {
+  ErrorMessage('Error updating game!')
 }
 
 const flashWinner = (winner) => {
   if (winner !== 'noone') {
     store.WinningCombo.forEach(function (element) {
-      console.log(element)
-      const target = $('.game-board').children()[element].firstElementChild
+      const target = $('.game-board').children()[element]
       $(target).addClass('wins')
     })
 
@@ -142,8 +134,13 @@ const getGameSuccess = function (response) {
   $('table').show(500)
 }
 
-const getGameFail = function (error) {
-  console.log(error)
+const getGameFail = function () {
+  ErrorMessage('Error loading previous games!')
+}
+
+const ErrorMessage = function (error) {
+  $('.error-message').text(error)
+  $('.error-box').toggleClass('hidden')
 }
 
 const clearBoard = function () {
@@ -170,5 +167,6 @@ module.exports = {
   getGameSuccess,
   getGameFail,
   clearBoard,
-  changeForm
+  changeForm,
+  ErrorMessage
 }

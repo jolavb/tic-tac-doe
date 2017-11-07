@@ -4,11 +4,11 @@ const playerSwitch = function () {
   const turnInfo = store.turnInfo
 
   if (turnInfo.player_x === true) {
-    turnInfo.image = 'https://i.imgur.com/rq7dJ2L.jpg'
+    turnInfo.image = 'https://i.imgur.com/ydthyUm.png'
     turnInfo.value = 'o'
     turnInfo.player_x = false
   } else {
-    turnInfo.image = 'https://i.imgur.com/2f8cJVF.jpg'
+    turnInfo.image = 'https://i.imgur.com/XuPfT7J.png'
     turnInfo.value = 'x'
     turnInfo.player_x = true
   }
@@ -73,7 +73,7 @@ const calcStats = () => {
 }
 
 const checkOccupied = function (selected) {
-  if ($(selected).css('background-image') !== 'none') {
+  if ($(selected).children().length !== 1) {
     return true
   }
 }
