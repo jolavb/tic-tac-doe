@@ -39,8 +39,8 @@
                   </tr>
                 </tbody>
               </table>
-              <button class='info-button' id='displayChangePass' type='button'>Change Password</button>
-              <button class='signout' type='button'>Log Out</button>
+              <button class='info-button btn btn-block' id='displayChangePass' type='button'>Change Password</button>
+              <button class='signout btn btn-block' type='button'>Log Out</button>
             </section>
           </section>
           <section  class="col col-sm-10 main-area">
@@ -58,6 +58,7 @@
 
               <form id='sign-in' class ='overlay-form'>
                 <legend> Sign In </legend>
+                <!-- <img src='https://s3.amazonaws.com/media-p.slid.es/uploads/ridermanb/images/630493/Homer_Computer.png' alt='homerlounge.png'> -->
                 <img src='https://i.imgur.com/40MxxnB.png' alt='homerlounge.png'>
                 <input name="credentials[email]" type='text' placeholder="email">
                 <input name="credentials[password]" type='password' placeholder="password">
@@ -77,6 +78,7 @@
 
                <form id='change-password'  class ='overlay-form hidden'>
                 <legend> Change Password </legend>
+                <img src= 'https://upload.wikimedia.org/wikipedia/en/7/7a/Chief_Wiggum.png'alt = 'chief wimmum'>
                 <input name="passwords[old]" type='password' placeholder="old password">
                 <input name="passwords[new]" type='password' placeholder="new password">
                 <button id='change-pass-btn' type='submit'>Submit</button>
@@ -85,13 +87,14 @@
 
               <div class= 'overlay-form error-box hidden'>
                 <legend> Error </legend>
-                <img src='https://i.pinimg.com/originals/3a/11/68/3a116884945f870924f1ffd3f36fc015.jpg' alt='doh'>
+                <img src='https://vignette.wikia.nocookie.net/simpsons/images/8/88/Homer_referee_tapped_out.png/revision/latest?cb=20150808022623' alt='doh'>
                 <div class='error-message'></div>
                 <button id='errorBtn' class='form-toggler'>OK</button>
               </div>
 
               <div class= 'overlay-form message inboard hidden'>
                 <legend id='gameMessage-legend'></legend>
+                <img src = '' id='gameImage'>
                 <div id='gameMessage'></div>
                 <button class='newGame' id='inMessage' type='button' >Play Again</button>
               </div>

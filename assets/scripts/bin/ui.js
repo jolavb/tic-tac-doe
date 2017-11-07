@@ -77,12 +77,15 @@ const updateGameSuccess = function (response) {
     const winner = logic.checkWin(store.game.cells)
     const events = require('./events')
     if (winner) {
-      if (winner === 'x') {
-        $('#gameMessage').html('<p>Player X wins the game</p>')
-      } else if (winner === 'o') {
-        $('#gameMessage').html('<p>Player O wins the game</p>')
+      if (winner === 'o') {
+        $('#gameMessage-legend').html('<p>You Win Whoo Hoo!!</p>')
+        $('#gameImage').attr('src', 'https://vignette.wikia.nocookie.net/simpsons/images/0/04/Dancin_homer.png/revision/latest?cb=20100131213740')
+      } else if (winner === 'x') {
+        $('#gameMessage-legend').html('<p>DOH! You Lose</p>')
+        $('#gameImage').attr('src', 'https://i.pinimg.com/originals/3a/11/68/3a116884945f870924f1ffd3f36fc015.jpg')
       } else if (winner === 'noone') {
-        $('#gameMessage').html('<p>No One Wins</p>')
+        $('#gameMessage-legend').html('<p>You\'re all losers!!</p>')
+        $('#gameImage').attr('src', 'http://www.officialpsds.com/images/thumbs/The-Simpsons-Mr-Burns-psd72388.png')
       }
       flashWinner(winner)
       events.onWin()
@@ -147,6 +150,7 @@ const clearBoard = function () {
   $('.cell').html('')
   $('.col').removeClass('wins')
   $('.col').removeClass('winnner')
+  store.turnInfo.player_x = true
 }
 
 module.exports = {
