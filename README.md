@@ -18,3 +18,18 @@ other utilizing a third paty api to store and calculate player stats.
 Although I have written out a remote 2 player version of this game which
 succssfully updates accross browsers, I haven't yet fully integrated it into
 the single player mode. This will be updated shortly.
+
+
+## Initial Wireframes
+
+<h3> LOGIN SCREEN </h3>
+<img src='wireframes/Login.png'>
+
+<h3> REGISTER </h3>
+<img src='wireframes/Register.png'>
+
+<h3> MAIN </h3>
+<img src='wireframes/Main.png'>
+
+<h3> WINNER </h3>
+<img src='wireframes/Winner.png'>
