@@ -109,11 +109,12 @@ const flashWinner = (winner) => {
 
     setTimeout(() => {
       clearInterval(flash)
-      clearBoard()
+      // clearBoard()
       changeForm('.message')
+      $('.col').show()
     }, 2000)
   } else {
-    clearBoard()
+    // clearBoard()
     changeForm('.message')
   }
 }
@@ -147,6 +148,7 @@ const ErrorMessage = function (error) {
 }
 
 const clearBoard = function () {
+  console.log('triggered')
   $('.cell').html('')
   $('.col').removeClass('wins')
   $('.col').removeClass('winnner')
