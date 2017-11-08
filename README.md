@@ -23,13 +23,13 @@ the single player mode. This will be updated shortly.
 ## Initial Wireframes
 
 <h3> LOGIN SCREEN </h3>
-<img src='wireframes/Login.png'>
+<img src='https://git.generalassemb.ly/raw/jolvab/game-project-scope-study/response/wireframes/Login.png'>
 
 <h3> REGISTER </h3>
-<img src='wireframes/Register.png'>
+<img src='https://git.generalassemb.ly/raw/jolvab/game-project-scope-study/response/wireframes/Register.png'>
 
 <h3> MAIN </h3>
-<img src='wireframes/Main.png'>
+<img src='https://git.generalassemb.ly/raw/jolvab/game-project-scope-study/response/wireframes/Main.png'>
 
 <h3> WINNER </h3>
-<img src='wireframes/Winner.png'>
+<img src='https://git.generalassemb.ly/raw/jolvab/game-project-scope-study/response/wireframes/Winner.png'>
