@@ -44,9 +44,11 @@ const onNewGame = function (event) {
 }
 
 const onPlay = function () {
-  if (logic.checkOccupied(this) && !store.game.over) {
+  if (store.user.isUserX === store.turnInfo.player_x || !store.multiplayer) {
     store.turnInfo.selected = $(this)
-    ui.updateBoard()
+    if (!store.multiplayer) {
+      ui.updateBoard()
+    }
     api.updateGame('false')
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFail)
@@ -85,6 +87,18 @@ const back = function () {
   ui.changeForm('#sign-in')
 }
 
+const displayMultiPlayer = function () {
+  ui.changeForm('#Multi-Player-form', true)
+}
+
+const onJoinGame = function (e) {
+  e.preventDefault()
+  const id = $('#game-id').val()
+  api.Join(id)
+    .then(ui.joinGameSuccess)
+    .catch(ui.joinGameFail)
+}
+
 module.exports = {
   onRegistration,
   onSignIn,
@@ -97,5 +111,7 @@ module.exports = {
   displayPassChange,
   Cancel,
   onWin,
-  back
+  back,
+  displayMultiPlayer,
+  onJoinGame
 }

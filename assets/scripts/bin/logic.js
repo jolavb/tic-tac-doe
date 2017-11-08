@@ -2,15 +2,16 @@ const store = require('./../store')
 
 const playerSwitch = function () {
   const turnInfo = store.turnInfo
-
   if (turnInfo.player_x === true) {
-    turnInfo.image = 'https://i.imgur.com/ydthyUm.png'
-    turnInfo.value = 'o'
-    turnInfo.player_x = false
-  } else {
     turnInfo.image = 'https://i.imgur.com/XuPfT7J.png'
     turnInfo.value = 'x'
+    turnInfo.player_x = false
+    $('#turn').text('O')
+  } else {
+    turnInfo.image = 'https://i.imgur.com/ydthyUm.png'
+    turnInfo.value = 'o'
     turnInfo.player_x = true
+    $('#turn').text('X')
   }
 }
 
@@ -77,6 +78,7 @@ const checkOccupied = function (selected) {
     return true
   }
 }
+
 
 module.exports = {
   playerSwitch,

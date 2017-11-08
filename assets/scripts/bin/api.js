@@ -94,6 +94,25 @@ const updateGame = function (over) {
   })
 }
 
+const Join = function (id) {
+  const data = '{}'
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiOrigin + '/games/' + id,
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const watchGame = function (id) {
+  return resourceWatcher.resourceWatcher(config.apiOrigin + '/games/' + id + '/watch', {
+    Authorization: 'Token token=' + store.user.token
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -102,5 +121,6 @@ module.exports = {
   newGame,
   updateGame,
   getGames,
-  watchGame
+  watchGame,
+  Join
 }
