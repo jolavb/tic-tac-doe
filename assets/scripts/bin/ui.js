@@ -127,10 +127,10 @@ const getGameSuccess = function (response) {
   store.games = response.games
   const stats = logic.calcStats()
   const total = stats.oWins + stats.xWins
-  const wonPercent = (stats.oWins / total) * 100
+  const wonPercent = (stats.xWins / total) * 100
   const lostPercent = 100 - wonPercent
-  $('.bar-won').html('<p>' + stats.oWins + '</p>')
-  $('.bar-lost').html('<p>' + stats.xWins + '</p>')
+  $('.bar-won').html('<p>' + stats.xWins + '</p>')
+  $('.bar-lost').html('<p>' + stats.oWins + '</p>')
   $('.bar-total').html('<p>' + store.games.length + '</p>')
   $('.bar-won').css('height', wonPercent + '%')
   $('.bar-lost').css('height', lostPercent + '%')
