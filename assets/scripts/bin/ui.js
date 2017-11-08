@@ -97,24 +97,22 @@ const updateGameFail = function () {
 }
 
 const flashWinner = (winner) => {
+  // Toggles winner class for winning combo
   if (winner !== 'noone') {
     store.WinningCombo.forEach(function (element) {
       const target = $('.game-board').children()[element]
       $(target).addClass('wins')
     })
-
     const flash = setInterval(() => {
       $('.' + 'wins').toggleClass('winner')
     }, 200)
-
     setTimeout(() => {
       clearInterval(flash)
-      // clearBoard()
+      clearBoard()
       changeForm('.message')
-      $('.col').show()
     }, 2000)
   } else {
-    // clearBoard()
+    clearBoard()
     changeForm('.message')
   }
 }
@@ -150,8 +148,8 @@ const ErrorMessage = function (error) {
 const clearBoard = function () {
   console.log('triggered')
   $('.cell').html('')
-  $('.col').removeClass('wins')
-  $('.col').removeClass('winnner')
+  $('.cell').removeClass('wins')
+  $('.cell').removeClass('winner')
   store.turnInfo.player_x = true
 }
 
