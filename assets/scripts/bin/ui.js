@@ -109,6 +109,7 @@ const flashWinner = (winner) => {
 
     setTimeout(() => {
       clearInterval(flash)
+      $('.col').css('visibility', 'visible')
       clearBoard()
       changeForm('.message')
     }, 2000)
