@@ -56,8 +56,10 @@ const signoutFail = function (response) {
 }
 
 const newGameSuccess = function (response) {
+  $('h3').show()
   clearBoard()
   store.game = response.game
+  $('#current-player').text('X')
 }
 
 const newGameFail = function () {
@@ -70,10 +72,11 @@ const updateGameSuccess = function (response) {
     const winner = logic.checkWin(store.game.cells)
     const events = require('./events')
     if (winner) {
-      if (winner === 'o') {
+      $('h3').hide()
+      if (winner === 'x') {
         $('#gameMessage-legend').html('<p>You Win Whoo Hoo!!</p>')
         $('#gameImage').attr('src', 'https://vignette.wikia.nocookie.net/simpsons/images/0/04/Dancin_homer.png/revision/latest?cb=20100131213740')
-      } else if (winner === 'x') {
+      } else if (winner === 'o') {
         $('#gameMessage-legend').html('<p>DOH! You Lose</p>')
         $('#gameImage').attr('src', 'https://i.pinimg.com/originals/3a/11/68/3a116884945f870924f1ffd3f36fc015.jpg')
       } else if (winner === 'noone') {
